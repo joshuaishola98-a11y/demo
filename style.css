@@ -12,6 +12,7 @@ body {
   flex-direction: column;
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
 }
 
 .main-header {
@@ -41,12 +42,17 @@ hr {
 .logo {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 5px;
   text-decoration: none;
+  font-size: 1.5em;
+  font-weight: 600;
+  color: #300101;
 }
 
 .logo img {
   height: 100px;
+  width: auto;
 }
 
 .nav-links {
@@ -63,6 +69,8 @@ hr {
   text-decoration: none;
   transition: 0.3s;
   color: #300101;
+  font-weight: 500;
+  padding: 8px 12px;
 }
 
 .nav-links a:hover {
@@ -77,6 +85,8 @@ a {
 }
 .nav-links ul {
   list-style: none;
+  display: flex;
+  gap: 20px;
 }
 
 .gallery-grid {
@@ -94,6 +104,7 @@ img {
   width: 300px;
   height: auto;
   border-radius: 8px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 }
 
 .hero-section {
@@ -113,16 +124,33 @@ img {
 .hero-content {
   position: relative;
   max-width: 700px;
+  z-index: 2;
+}
+
+.hero-section::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("./JROYAL-1.jpg") no-repeat center center/cover;
+  opacity: 0.2;
+  z-index: 1;
 }
 
 .hero-content h1 {
   font-size: 48px;
   margin-bottom: 15px;
 }
+.hero-content h1 span {
+  color: #f4eaea;
+}
 
 .hero-content p {
   margin-bottom: 25px;
   font-size: 18px;
+  color: #f4eaea;
 }
 
 .primary-btn {
@@ -137,6 +165,7 @@ img {
 }
 .primary-btn:hover {
   background-color: #555;
+  color: #fff;
 }
 .secondary-btn {
   display: inline-block;
@@ -150,12 +179,30 @@ img {
 }
 .secondary-btn:hover {
   background-color: #240101;
+  color: #fff;
 }
+.section-title {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 2em;
+  color: #300101;
+}
+
 .gallery-section {
   padding: 50px 20px;
   max-width: 1200px;
   margin: auto;
   text-align: center;
+}
+.gallery-section p {
+  font-size: 1.1em;
+  color: #080000;
+  max-width: 800px;
+  margin: 0 auto 30px auto;
+  line-height: 1.6;
+}
+.gallery-section p strong {
+  color: #300101;
 }
 
 .gallery-grid {
@@ -163,6 +210,10 @@ img {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
+}
+.gallery-grid img {
+  width: 100%;
+  height: auto;
 }
 
 .gallery-section h2 {
@@ -178,9 +229,12 @@ img {
 .gallery-grid img:hover {
   transform: scale(1.05);
 }
+
 .contact-section {
   background-color: #eee;
   padding: 50px 20px;
+  max-width: 800px;
+  margin: 50px auto;
 }
 .contact-section h2 {
   text-align: center;
@@ -188,12 +242,25 @@ img {
   font-size: 2em;
   color: #300101;
 }
+.contact-section p {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 1.1em;
+  color: #080000;
+  line-height: 1.6;
+}
+
 .contact-section form {
   max-width: 600px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
 }
+.contact-section label {
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
 .contact-section input,
 .contact-section textarea {
   padding: 10px;
@@ -202,6 +269,11 @@ img {
   border-radius: 5px;
   font-size: 1em;
 }
+.contact-section textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+.contact-section input:focus,
 .contact-section button {
   padding: 10px;
   font-size: 1em;
@@ -214,11 +286,37 @@ img {
 .contact-section button:hover {
   background-color: #240101;
 }
+.contact-section input:focus {
+  border-color: #300101;
+  outline: none;
+}
+
 .service-section {
   padding: 40px 60px;
   display: flex;
   gap: 20px;
   position: absolute;
+  max-width: 1200px;
+  margin: auto;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+.service-section p {
+  font-size: 1.1em;
+  color: #080000;
+  max-width: 800px;
+  margin: 0 auto 30px auto;
+  line-height: 1.6;
+}
+.service-section p strong {
+  color: #300101;
+}
+.service-section h2 {
+  color: #300101;
 }
 
 .services-list {
@@ -226,6 +324,9 @@ img {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 25px;
+}
+.service-card:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
 .service-section h2 {
@@ -246,14 +347,25 @@ img {
 .service-card:hover {
   transform: translateX(-8px);
 }
+
 .service-card h3 {
   margin-bottom: 15px;
 }
+.service-card p {
+  font-size: 1em;
+  color: #080000;
+  line-height: 1.5;
+}
+
 .about-section {
   padding: 50px 20px;
   margin: auto;
   text-align: center;
   max-width: 1100px;
+}
+.about-section h2 {
+  margin-bottom: 20px;
+  color: #300101;
 }
 
 .about-content {
@@ -274,6 +386,7 @@ img {
   font-size: 2em;
   margin-bottom: 20px;
 }
+
 .about-section p {
   font-size: 1.2em;
   color: #080000;
@@ -282,9 +395,15 @@ img {
   text-align: center;
   line-height: 1.6;
 }
+
 .social-links {
   margin-top: 20px;
+  text-align: center;
+  display: grid;
+  grid-template-rows: auto auto;
+  justify-items: center;
 }
+
 .social-links h3 {
   margin-bottom: 10px;
   color: #300101;
@@ -314,6 +433,7 @@ img {
   transform: rotate(-3deg) skew(2deg) translate(0, 0);
   box-shadow: -15px 15px 8px rgba(0, 0, 0, 0.1);
 }
+
 .social-links a:hover {
   color: #240101;
   transform: rotate(0deg) skew(0deg) scale(1.05);
